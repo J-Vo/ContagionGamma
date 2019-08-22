@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.49641287, b: 0.5748173, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -219,9 +219,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
-  bulletSpeed: 5000
+  bulletSpeed: 1000
+  clipSize: 40
   fpsCam: {fileID: 1636452845}
-  bullet: {fileID: 1811621200}
+  bullet: {fileID: 8177369334407039459, guid: 637a90796921942b2b3c195e53066e8b, type: 3}
+  muzzleflash: {fileID: 0}
 --- !u!1 &830232704
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,9 +254,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5000001
-  m_Height: 2
+  m_Height: 2.802575
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 0.000000059604645, y: 0.09391594, z: -0.00000011920929}
 --- !u!23 &830232706
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -327,14 +329,14 @@ GameObject:
   - component: {fileID: 990320121}
   - component: {fileID: 990320120}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!64 &990320120
-MeshCollider:
+--- !u!65 &990320120
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -343,10 +345,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+  serializedVersion: 2
+  m_Size: {x: 10, y: 1, z: 10}
+  m_Center: {x: 0, y: -0.5, z: 0}
 --- !u!23 &990320121
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -436,9 +437,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5000001
-  m_Height: 2
+  m_Height: 2.966135
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 0.000000059604645, y: -0.010958672, z: -0.00000011920929}
 --- !u!23 &999748419
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -891,6 +892,7 @@ GameObject:
   - component: {fileID: 1702882424}
   - component: {fileID: 1702882423}
   - component: {fileID: 1702882422}
+  - component: {fileID: 1702882425}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -972,6 +974,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1702882425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1702882421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 356548d854d7e42f2824782ab272573c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1707520065
 GameObject:
   m_ObjectHideFlags: 0
@@ -1060,6 +1074,32 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!136 &1811621205
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1811621200}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.00806427
+  m_Height: 0.054769993
+  m_Direction: 2
+  m_Center: {x: 0.0000005736947, y: 0.00065889955, z: 0.002709847}
+--- !u!114 &1811621206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1811621200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f9bc1883476c4165a4e85ff68d988fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1973604018
 GameObject:
   m_ObjectHideFlags: 0
@@ -1244,7 +1284,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 05ed45f4304d8684b9761083f3d5e204, type: 2}
     - target: {fileID: 400002, guid: 1dc2a27ad3a63d24bad7f1c6d159013e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.235
+      value: 0.2431
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1dc2a27ad3a63d24bad7f1c6d159013e, type: 3}

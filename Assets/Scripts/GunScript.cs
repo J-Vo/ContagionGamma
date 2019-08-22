@@ -4,6 +4,7 @@ public class GunScript : MonoBehaviour
 {
     public float damage = 10f;
     public float bulletSpeed = 1;
+    public int clipSize = 40;
 
 
     public Camera fpsCam;
@@ -25,7 +26,7 @@ public class GunScript : MonoBehaviour
         GameObject tempBullet = Instantiate(bullet, transform.position, transform.rotation) as GameObject;
         Rigidbody tempRigidBodyBullet = tempBullet.GetComponent<Rigidbody>();
         tempRigidBodyBullet.AddForce(tempRigidBodyBullet.transform.forward * bulletSpeed);
-        Destroy(tempBullet, 0.5f);
+        //Destroy(tempBullet, 0.5f);
        
     }
 }
