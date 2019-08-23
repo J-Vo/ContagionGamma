@@ -10,6 +10,7 @@ public class GunScript : MonoBehaviour
     public Camera fpsCam;
     public GameObject bullet;
     public ParticleSystem muzzleflash;
+    public PlayerController gunOwner;
 
     // Update is called once per frame
     void Update()
@@ -23,10 +24,15 @@ public class GunScript : MonoBehaviour
 
     void Shoot()
     {
-        GameObject tempBullet = Instantiate(bullet, transform.position, transform.rotation) as GameObject;
-        Rigidbody tempRigidBodyBullet = tempBullet.GetComponent<Rigidbody>();
-        tempRigidBodyBullet.AddForce(tempRigidBodyBullet.transform.forward * bulletSpeed);
-        //Destroy(tempBullet, 0.5f);
-       
+        if(gunOwner.GetAmmoCount() > 0f)
+        {
+            GameObject tempBullet = Instantiate(bullet, transform.position, transform.rotation) as GameObject;
+            Rigidbody tempRigidBodyBullet = tempBullet.GetComponent<Rigidbody>();
+            tempRigidBodyBullet.AddForce(tempRigidBodyBullet.transform.forward * bulletSpeed);
+
+            gunOwner.RemoveAmmo(1);
+        }
+
+
     }
 }

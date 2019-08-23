@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public GameObject floor;
 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.gameObject.name);
         //only destroy when it hits the ground
         if(collision.gameObject.name == "Floor")
         {
