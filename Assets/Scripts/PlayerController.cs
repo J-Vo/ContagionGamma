@@ -8,6 +8,9 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public Inventory playerInventory;
     public Text ammoCount;
+
+   // public Text healthBar;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -18,6 +21,8 @@ public class PlayerController : MonoBehaviour
     public void UpdateHUD()
     {
         ammoCount.text = "Ammo: " + GetAmmoCount();
+
+        //healthbar.text = "Heath:" + GetHealthAmount();
     }
 
     public void AddInventory(string item, float quantity)
