@@ -9,8 +9,10 @@ public class PlayerController : MonoBehaviour
     public Inventory playerInventory;
     public Text ammoCount;
 
-   // public Text healthBar;
+    public float health;
 
+    public Slider slider;
+    
     // Start is called before the first frame update
     private void Start()
     {
@@ -22,7 +24,8 @@ public class PlayerController : MonoBehaviour
     {
         ammoCount.text = "Ammo: " + GetAmmoCount();
 
-        //healthbar.text = "Heath:" + GetHealthAmount();
+        slider.value = GetHealthStatus();
+
     }
 
     public void AddInventory(string item, float quantity)
@@ -40,5 +43,30 @@ public class PlayerController : MonoBehaviour
     {
         playerInventory.RemoveInventory("AmmoBox", quantity);
         UpdateHUD();
+    }
+
+    public void ConsumeMedkit(float quantity)
+    {
+        float difference;
+
+        if (quantity + health > slider.maxValue)
+        {
+            difference = (quantity + health) - slider.maxValue;
+
+            difference = quantity - difference;
+
+            health += difference;
+        }
+        else{
+            health += quantity;
+        }
+
+        playerInventory.RemoveInventory("Medkit", quantity);
+
+        UpdateHUD();
+    }
+    public float GetHealthStatus()
+    {
+        return  health;
     }
 }
