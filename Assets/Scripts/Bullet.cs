@@ -9,9 +9,15 @@ public class Bullet : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         //only destroy when it hits the ground
-        if(collision.gameObject.name == "Floor")
+        if (collision.gameObject.name == "Floor")
         {
             Destroy(this.gameObject, 2.0f);
+        }
+        else if (collision.gameObject.name == "Enemy"){
+
+            Destroy(this.gameObject);
+
+            HitEffect(collision);
         }
     }
 }
