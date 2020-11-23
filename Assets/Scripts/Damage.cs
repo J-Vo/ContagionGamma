@@ -5,7 +5,7 @@ using UnityEngine;
 public class Damage : MonoBehaviour
 {
 
-    void HitEffect(Collision collision) { 
+    public static void HitEffect(Collision collision) { 
 
 
     

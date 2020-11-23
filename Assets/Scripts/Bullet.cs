@@ -6,18 +6,21 @@ public class Bullet : MonoBehaviour
 {
     public GameObject floor;
 
-    void OnCollisionEnter(Collision collision)
+    public float damage;
+
+    public void OnCollisionEnter(Collision other)
     {
-        //only destroy when it hits the ground
-        if (collision.gameObject.name == "Floor")
+        Debug.Log(other.gameObject.tag);
+        if (other.gameObject.tag == "Enemy")
         {
-            Destroy(this.gameObject, 2.0f);
+            Debug.Log("Enemy found");
+            EnemyHealth eHealth = other.gameObject.GetComponent<EnemyHealth>();
+            eHealth.AdjustCurrentHealth(damage);
         }
-        else if (collision.gameObject.name == "Enemy"){
+        Destroy(this.gameObject);
+    }
 
-            Destroy(this.gameObject);
-
-            HitEffect(collision);
-        }
+    public float getDamage(){
+        return this.damage;
     }
 }

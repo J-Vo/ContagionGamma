@@ -17,10 +17,21 @@ public class Inventory
     {
         InventoryItem existingItem = items.FirstOrDefault(x => x.item == item);
         //check if the item already exists
-        if(existingItem.item != null)
+        Debug.Log("Passed Item Name: " + item + " " + "Passed Item Quantity: " + quantity);
+        Debug.Log("Item Name: " + existingItem.item + " " + "Item Quantity: " + existingItem.quantity);
+
+        if (existingItem.item != null)
         {
+            Debug.Log("Inside if Statement.");
             //if it exists, just add the quantity
-            existingItem.quantity += quantity;
+            int index = items.FindIndex(x => x.item == item);
+            InventoryItem newItem = new InventoryItem
+            {
+                item = existingItem.item,
+                quantity = existingItem.quantity + quantity
+            };
+            items[index] = newItem;
+
         } else
         {
             InventoryItem newItem = new InventoryItem

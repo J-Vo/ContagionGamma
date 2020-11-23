@@ -1,17 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour
+public class MoveTo : MonoBehaviour
 {
-
-    //attributes
-    //health
-    //attackDamage
-    //attackRange
-    //movement
-
     public GameObject myGameObject;
     public NavMeshAgent nav;
     public Transform goal;
@@ -28,9 +19,8 @@ public class Enemy : MonoBehaviour
         agent.destination = goal.position;
     }
 
-    public void Death()
-    {
-        Debug.Log("Death");
+    public void Death(){
+        
         nav.enabled = false;
         Rigidbody gameObjectsRigidBody = myGameObject.AddComponent<Rigidbody>(); // Add the rigidbody.
         gameObjectsRigidBody.mass = 5;
