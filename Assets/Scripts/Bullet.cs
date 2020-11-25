@@ -10,17 +10,11 @@ public class Bullet : MonoBehaviour
 
     public void OnCollisionEnter(Collision other)
     {
-        Debug.Log(other.gameObject.tag);
-        if (other.gameObject.tag == "Enemy")
-        {
-            Debug.Log("Enemy found");
-            EnemyHealth eHealth = other.gameObject.GetComponent<EnemyHealth>();
-            eHealth.AdjustCurrentHealth(damage);
-        }
-        Destroy(this.gameObject);
-    }
+        Debug.Log(other.gameObject.name);
 
-    public float getDamage(){
-        return this.damage;
+        if (other.gameObject != null)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

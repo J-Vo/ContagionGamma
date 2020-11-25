@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
 {
 
     //attributes
-    //health
+    public float health = 100;
     //attackDamage
     //attackRange
     //movement
@@ -25,14 +25,33 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         NavMeshAgent agent = GetComponent<NavMeshAgent>();
-        agent.destination = goal.position;
+        if (agent.enabled)
+        {
+            agent.destination = goal.position;
+        }
     }
 
+    public void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Enemy collided");
+        if (collision.gameObject.tag == "Projectile")
+        {
+            Debug.Log("Remove health");
+            health -= 10;
+
+            if (health <= 0){
+                Death();
+            }
+            
+        }
+    }
     public void Death()
     {
         Debug.Log("Death");
         nav.enabled = false;
         Rigidbody gameObjectsRigidBody = myGameObject.AddComponent<Rigidbody>(); // Add the rigidbody.
+       // BoxCollider gameObjectCollider = myGameObject.GetComponent<BoxCollider>();
+       // gameObjectCollider.enabled = false;
         gameObjectsRigidBody.mass = 5;
 
     }

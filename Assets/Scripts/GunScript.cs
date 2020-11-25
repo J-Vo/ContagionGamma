@@ -10,6 +10,7 @@ public class GunScript : MonoBehaviour
 
     public Camera fpsCam;
     public GameObject bullet;
+    public GameObject gunMuzzle;
     public ParticleSystem muzzleflash;
     public PlayerController gunOwner;
     public GameObject bulletCasing;
@@ -32,7 +33,7 @@ public class GunScript : MonoBehaviour
     {
         if(gunOwner.GetAmmoCount() > 0f)
         {
-            GameObject tempBullet = Instantiate(bullet, transform.position, transform.rotation) as GameObject;
+            GameObject tempBullet = Instantiate(bullet, gunMuzzle.transform.position, transform.rotation) as GameObject;
             Rigidbody tempRigidBodyBullet = tempBullet.GetComponent<Rigidbody>();
             tempRigidBodyBullet.AddForce(tempRigidBodyBullet.transform.forward * bulletSpeed);
             gunOwner.RemoveAmmo(1);
