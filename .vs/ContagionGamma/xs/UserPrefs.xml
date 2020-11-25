@@ -1,0 +1,33 @@
+﻿<Properties StartupConfiguration="{EF2213ED-D08B-605A-DFED-63E4BCFBEC49}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/AmmoBox.cs">
+    <Files>
+      <File FileName="Assets/Scripts/Bullet.cs" Line="19" Column="42" />
+      <File FileName="Assets/Scripts/GunScript.cs" Line="33" Column="52" />
+      <File FileName="Assets/Scripts/PlayerController.cs" Line="15" Column="1" />
+      <File FileName="Assets/Scripts/Inventory.cs" Line="35" Column="6" />
+      <File FileName="Assets/Scripts/AmmoBox.cs" Line="7" Column="9" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="ContagionGamma" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="Scripts" expanded="True">
+                <Node name="AmmoBox.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="c467fab5-ecfa-4779-87da-9101ff891b98" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/garrettmoody/Documents/GitHub/ContagionGamma/Assets/Scripts/PlayerController.cs" relfile="Assets/Scripts/PlayerController.cs" line="14" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
