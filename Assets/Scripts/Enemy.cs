@@ -5,16 +5,23 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+    public GameObject player;
+    public NavMeshAgent nav;
+    public Transform goal;
 
     //attributes
     public float health = 100;
-    //attackDamage
-    //attackRange
-    //movement
+    public bool alive = true;
+    
 
-    public GameObject myGameObject;
-    public NavMeshAgent nav;
-    public Transform goal;
+    //attack
+    public float attackDamage = -10;
+    public float lastAtttackTime;
+    public float attackRate = 3;
+    public float attackRange = 3f;
+    public float curDistance;
+
+
 
     void Start()
     {
@@ -29,6 +36,15 @@ public class Enemy : MonoBehaviour
         {
             agent.destination = goal.position;
         }
+
+        curDistance = Vector3.Distance(this.transform.position, goal.position);
+
+        if (curDistance < attackRange && Time.time - lastAtttackTime > attackRate && alive)
+        {
+            lastAtttackTime = Time.time;
+            Attack();
+        }
+
     }
 
     public void OnCollisionEnter(Collision collision)
@@ -39,7 +55,7 @@ public class Enemy : MonoBehaviour
             Debug.Log("Remove health");
             health -= 10;
 
-            if (health <= 0){
+            if (health <= 0 && alive){
                 Death();
             }
             
@@ -49,10 +65,16 @@ public class Enemy : MonoBehaviour
     {
         Debug.Log("Death");
         nav.enabled = false;
-        Rigidbody gameObjectsRigidBody = myGameObject.AddComponent<Rigidbody>(); // Add the rigidbody.
+        Rigidbody gameObjectsRigidBody = this.gameObject.AddComponent<Rigidbody>(); // Add the rigidbody.
+        alive = false;
        // BoxCollider gameObjectCollider = myGameObject.GetComponent<BoxCollider>();
        // gameObjectCollider.enabled = false;
-        gameObjectsRigidBody.mass = 5;
 
+    }
+    public void Attack()
+    {
+       PlayerHealth health = player.GetComponent<PlayerHealth>();
+
+        health.adjustHealth(attackDamage);
     }
 }

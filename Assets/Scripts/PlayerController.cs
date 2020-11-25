@@ -7,7 +7,9 @@ public class PlayerController : MonoBehaviour
 {
     [HideInInspector]
     public Inventory playerInventory;
+    public PlayerHealth playerHealth;
     public Text ammoCount;
+    public Text playerHealthBar;
 
    // public Text healthBar;
 
@@ -22,7 +24,7 @@ public class PlayerController : MonoBehaviour
     {
         ammoCount.text = "Ammo: " + GetAmmoCount();
 
-        //healthbar.text = "Heath:" + GetHealthAmount();
+        playerHealthBar.text = "Health: " + GetHealth();
     }
 
     public void AddInventory(string item, float quantity)
@@ -34,6 +36,10 @@ public class PlayerController : MonoBehaviour
     public float GetAmmoCount()
     {
         return playerInventory.GetItemCount("AmmoBox");
+    }
+    public float GetHealth()
+    {
+        return playerHealth.getHealth();
     }
 
     public void RemoveAmmo(float quantity)
